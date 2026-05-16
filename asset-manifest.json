@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/highway-to-birthday/static/css/main.766b9958.css",
+    "main.js": "/highway-to-birthday/static/js/main.da93da59.js",
+    "index.html": "/highway-to-birthday/index.html",
+    "main.766b9958.css.map": "/highway-to-birthday/static/css/main.766b9958.css.map",
+    "main.da93da59.js.map": "/highway-to-birthday/static/js/main.da93da59.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.766b9958.css",
+    "static/js/main.da93da59.js"
+  ]
+}
