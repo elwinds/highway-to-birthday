@@ -1,0 +1,191 @@
+﻿.duel2-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+
+    // Звёздный фон (как в дубле 1)
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+            radial-gradient(2px 2px at 20px 30px, #fff, rgba(0, 0, 0, 0)),
+            radial-gradient(1px 1px at 60px 120px, #ffd700, rgba(0, 0, 0, 0)),
+            radial-gradient(3px 3px at 150px 80px, #fff, rgba(0, 0, 0, 0)),
+            radial-gradient(1px 1px at 250px 300px, #ffd700, rgba(0, 0, 0, 0)),
+            radial-gradient(2px 2px at 400px 150px, #fff, rgba(0, 0, 0, 0)),
+            radial-gradient(1px 1px at 550px 450px, #ffd700, rgba(0, 0, 0, 0));
+        background-size: 200px 200px;
+        background-repeat: no-repeat;
+        opacity: 0.3;
+        pointer-events: none;
+    }
+}
+
+.duel2-content {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.duel2-title {
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-bottom: 20px;
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.duel2-description {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 40px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+
+    .highlight {
+        color: #ffd700;
+        letter-spacing: 1px;
+    }
+}
+
+.coordinates-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.coordinates-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 14px 20px;
+    font-size: 1rem;
+    font-family: 'Montserrat', monospace;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    border-radius: 12px;
+    color: #ffd700;
+    text-align: center;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    outline: none;
+
+    &:focus {
+        border-color: #ffd700;
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    &::placeholder {
+        color: rgba(255, 215, 0, 0.4);
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.85rem;
+    }
+}
+
+.coordinates-submit {
+    background: transparent;
+    border: 2px solid #ffd700;
+    color: #ffd700;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 40px;
+
+    &:hover {
+        background: #ffd700;
+        color: #000000;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+}
+
+// Сообщение с обратной связью
+.feedback-message {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 20px;
+    backdrop-filter: blur(10px);
+
+    &.success {
+        background: rgba(0, 0, 0, 0.7);
+        border: 2px solid #ffd700;
+        color: #ffd700;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+
+    &.error {
+        background: rgba(0, 0, 0, 0.7);
+        border: 2px solid #ff0000;
+        color: #ff6666;
+    }
+}
+
+.feedback-icon {
+    font-size: 1.2rem;
+}
+
+.feedback-text {
+    letter-spacing: 1px;
+}
+
+// Адаптив для мобильных
+@media (max-width: 768px) {
+    .duel2-title {
+        font-size: 2rem;
+    }
+
+    .duel2-description {
+        font-size: 1rem;
+    }
+
+    .coordinates-input {
+        font-size: 0.9rem;
+        padding: 12px 16px;
+    }
+
+    .coordinates-submit {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .duel2-title {
+        font-size: 1.5rem;
+    }
+
+    .duel2-description {
+        font-size: 0.9rem;
+    }
+
+    .feedback-message {
+        font-size: 0.85rem;
+        padding: 8px 16px;
+    }
+}

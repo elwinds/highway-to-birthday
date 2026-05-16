@@ -1,0 +1,322 @@
+﻿.duel5-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(0deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 215, 0, 0.03) 2px,
+                rgba(255, 215, 0, 0.03) 4px);
+        pointer-events: none;
+    }
+}
+
+.duel5-content {
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.duel5-title {
+    font-size: 2rem;
+    color: #ffd700;
+    margin-bottom: 20px;
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.duel5-description {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.5;
+}
+
+.duel5-instruction {
+    font-size: 0.9rem;
+    color: rgba(255, 215, 0, 0.7);
+    margin-bottom: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+}
+
+// Прогресс-бар
+.progress-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 40px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    position: relative;
+}
+
+.progress-bar {
+    height: 40px;
+    background: linear-gradient(90deg, #ffd700, #ff6600, #ff0000);
+    transition: width 0.05s linear;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+}
+
+// Кнопка-детонатор
+.detonator-button {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border: 3px solid #ff0000;
+    color: #ff0000;
+    padding: 20px 40px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Anton', sans-serif;
+    border-radius: 60px;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 350px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+
+    &.initial {
+        border-color: #ff0000;
+        color: #ff0000;
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+    }
+
+    &.ready {
+        border-color: #ffd700;
+        color: #ffd700;
+        background: linear-gradient(135deg, #2a1a00 0%, #1a0a00 100%);
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+
+    &.pressed {
+        border-color: #ff6600;
+        color: #ff6600;
+        background: linear-gradient(135deg, #3a1a00 0%, #2a0a00 100%);
+    }
+
+    &:hover {
+        transform: scale(1.02);
+    }
+}
+
+// Сообщение
+.feedback-message {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 30px;
+    backdrop-filter: blur(10px);
+
+    &.success {
+        background: rgba(0, 0, 0, 0.7);
+        border: 2px solid #ffd700;
+        color: #ffd700;
+    }
+
+    &.error {
+        background: rgba(0, 0, 0, 0.7);
+        border: 2px solid #ff0000;
+        color: #ff6666;
+    }
+}
+
+.feedback-icon {
+    font-size: 1.3rem;
+}
+
+.reset-button {
+    background: transparent;
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    color: rgba(255, 215, 0, 0.7);
+    padding: 8px 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 40px;
+    margin-top: 20px;
+
+    &:hover {
+        border-color: #ffd700;
+        color: #ffd700;
+    }
+}
+
+// Искры и фейерверк
+.fireworks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.spark {
+    position: absolute;
+    font-size: 1.5rem;
+    pointer-events: none;
+}
+
+// Тряска экрана
+body.shake {
+    animation: shake 0.1s ease-in-out 0s 5;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+// Адаптив
+@media (max-width: 600px) {
+    .duel5-title {
+        font-size: 1.5rem;
+    }
+
+    .detonator-button {
+        font-size: 1rem;
+        padding: 15px 20px;
+        letter-spacing: 2px;
+    }
+
+    .progress-container {
+        max-width: 300px;
+    }
+
+    .progress-text {
+        font-size: 0.7rem;
+    }
+}
+
+.detonator-button {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border: 3px solid #ff0000;
+    color: #ff0000;
+    padding: 20px 40px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Anton', sans-serif;
+    border-radius: 60px;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    &.ready {
+        border-color: #ffd700;
+        color: #ffd700;
+        background: linear-gradient(135deg, #2a1a00 0%, #1a0a00 100%);
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+
+    .button-icon {
+        font-size: 1.5rem;
+        animation: pulse-icon 0.8s infinite;
+    }
+}
+
+@keyframes pulse-icon {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+// Стили для музыкальных нот
+.music-notes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.music-note {
+    position: absolute;
+    font-size: 1.5rem;
+    pointer-events: none;
+    filter: drop-shadow(0 0 5px #ffd700);
+}

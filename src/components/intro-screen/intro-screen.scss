@@ -1,0 +1,143 @@
+﻿.intro-screen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+
+    // Эффект кинематографического виньетирования
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    // Анимированные линии как на киноплёнке
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(0deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 215, 0, 0.03) 2px,
+                rgba(255, 215, 0, 0.03) 4px);
+        pointer-events: none;
+        z-index: 1;
+    }
+}
+
+.intro-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+}
+
+.intro-text {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.4;
+
+    .highlight {
+        color: #ffd700;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+}
+
+// Кнопка PLAY в стиле кино
+.play-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    position: relative;
+
+    &:hover {
+        transform: scale(1.05);
+
+        .play-button-icon {
+            background: #ffd700;
+            border-color: #ffd700;
+            color: #000;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+        }
+
+        .play-button-text {
+            letter-spacing: 4px;
+        }
+    }
+}
+
+.play-button-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    border: 3px solid #ffd700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffd700;
+    transition: all 0.3s ease;
+
+    // Пульсация
+    animation: pulse 2s infinite;
+
+    svg {
+        margin-left: 5px; // небольшой сдвиг для визуального центрирования треугольника
+    }
+}
+
+.play-button-text {
+    color: #ffd700;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px 16px;
+    border-radius: 30px;
+}
+
+// Анимация пульсации
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 0 15px rgba(255, 215, 0, 0);
+        transform: scale(1.05);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+        transform: scale(1);
+    }
+}

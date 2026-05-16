@@ -1,0 +1,377 @@
+﻿.duel3-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+    padding: 40px 20px;
+    position: relative;
+    overflow-x: auto;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(0deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 215, 0, 0.03) 2px,
+                rgba(255, 215, 0, 0.03) 4px);
+        pointer-events: none;
+    }
+}
+
+.duel3-content {
+    max-width: 1400px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.duel3-title {
+    font-size: 2rem;
+    color: #ffd700;
+    margin-bottom: 20px;
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.duel3-description {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+
+    .highlight {
+        color: #ffd700;
+        font-weight: bold;
+    }
+}
+
+.duel3-subtitle {
+    font-size: 0.9rem;
+    color: rgba(255, 215, 0, 0.7);
+    margin-bottom: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+}
+
+// Сетка с мемами — фиксируем количество колонок под количество мемов
+.memes-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); // 6 колонок для 6 мемов
+    gap: 16px;
+    margin-bottom: 30px;
+
+    // Если экран меньше 1200px — делаем скролл
+    @media (max-width: 1200px) {
+        overflow-x: auto;
+        grid-template-columns: repeat(6, minmax(160px, 200px));
+        justify-content: center;
+        padding-bottom: 10px;
+
+        // Стили для скроллбара
+        &::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba(255, 215, 0, 0.5);
+            border-radius: 4px;
+
+            &:hover {
+                background: rgba(255, 215, 0, 0.8);
+            }
+        }
+    }
+}
+
+// На маленьких экранах уменьшаем карточки
+@media (max-width: 900px) {
+    .memes-grid {
+        grid-template-columns: repeat(6, minmax(140px, 160px));
+        gap: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .memes-grid {
+        grid-template-columns: repeat(6, minmax(120px, 140px));
+        gap: 10px;
+    }
+}
+
+.meme-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    background: rgba(0, 0, 0, 0.6);
+
+    &:hover {
+        transform: translateY(-5px);
+        border-color: #ffd700;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 215, 0, 0.3);
+    }
+
+    &.correct {
+        animation: correctGlow 0.5s ease forwards;
+    }
+
+    &.wrong {
+        animation: wrongShake 0.3s ease forwards;
+    }
+}
+
+.meme-card-inner {
+    position: relative;
+}
+
+.meme-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+
+.meme-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+    padding: 8px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.meme-card:hover .meme-overlay {
+    opacity: 1;
+}
+
+.meme-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 4px;
+}
+
+.meme-status {
+    font-size: 0.6rem;
+
+    .has-photo {
+        color: #00ff00;
+    }
+
+    .no-photo {
+        color: #ffd700;
+    }
+}
+
+.feedback-message {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 20px;
+    backdrop-filter: blur(10px);
+
+    &.success {
+        background: rgba(0, 0, 0, 0.7);
+        border: 2px solid #ffd700;
+        color: #ffd700;
+    }
+
+    &.error {
+        background: rgba(0, 0, 0, 0.7);
+        border: 2px solid #ff0000;
+        color: #ff6666;
+    }
+}
+
+.feedback-icon {
+    font-size: 1.3rem;
+}
+
+// Галерея
+// Галерея — такой же дизайн, как у верхних карточек
+.gallery-container {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid rgba(255, 215, 0, 0.3);
+    overflow: hidden;
+}
+
+.gallery-title {
+    font-size: 1.3rem;
+    color: #ffd700;
+    margin-bottom: 25px;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 2px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); // 6 колонок, как у мемов
+    gap: 16px;
+    margin-bottom: 20px;
+
+    @media (max-width: 1200px) {
+        overflow-x: auto;
+        grid-template-columns: repeat(6, minmax(160px, 200px));
+        padding-bottom: 10px;
+
+        &::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba(255, 215, 0, 0.5);
+            border-radius: 4px;
+
+            &:hover {
+                background: rgba(255, 215, 0, 0.8);
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .gallery-grid {
+        grid-template-columns: repeat(6, minmax(140px, 160px));
+        gap: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(6, minmax(120px, 140px));
+        gap: 10px;
+    }
+}
+
+.gallery-card {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    background: rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        border-color: #ffd700;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 215, 0, 0.3);
+    }
+}
+
+.gallery-card-inner {
+    position: relative;
+}
+
+.gallery-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-no-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    gap: 12px;
+}
+
+.gallery-cross {
+    font-size: 3rem;
+    color: rgba(255, 0, 0, 0.7);
+    font-weight: bold;
+}
+
+.gallery-no-text {
+    font-size: 0.7rem;
+    color: rgba(255, 215, 0, 0.5);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+    padding: 8px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-card:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 4px;
+}
+
+.gallery-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6rem;
+    color: #ccc;
+}
+
+// Адаптив
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: repeat(6, minmax(100px, 120px));
+        gap: 8px;
+    }
+
+    .gallery-name {
+        font-size: 0.6rem;
+    }
+
+    .gallery-desc {
+        font-size: 0.5rem;
+    }
+
+    .gallery-cross {
+        font-size: 2rem;
+    }
+
+    .gallery-no-text {
+        font-size: 0.5rem;
+    }
+}

@@ -1,0 +1,53 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000000;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+// Зернистость плёнки (общий эффект для всего приложения)
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-radial-gradient(circle, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 2px, transparent 2px, transparent 4px);
+    pointer-events: none;
+    z-index: 999;
+}
+
+// Глобальный класс для золотой кнопки
+.gold-button {
+    background: transparent;
+    border: 2px solid #ffd700;
+    color: #ffd700;
+    padding: 12px 32px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
+
+    &:hover:not(:disabled) {
+        background: #ffd700;
+        color: #000000;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+
+    &:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
+}

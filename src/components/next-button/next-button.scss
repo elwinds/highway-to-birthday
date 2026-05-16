@@ -1,0 +1,137 @@
+﻿.next-button-container {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 100;
+    animation: clapperboardAppear 0.5s ease-out;
+}
+
+.next-button {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border: 2px solid #ffd700;
+    border-radius: 60px;
+    padding: 12px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 215, 0, 0.2);
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15), transparent);
+        transition: left 0.5s ease;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.4);
+        border-color: #ffed4a;
+
+        &::before {
+            left: 100%;
+        }
+
+        .next-button-icon {
+            transform: rotate(10deg) scale(1.05);
+        }
+
+        .next-button-stick {
+            transform: translateX(5px);
+        }
+    }
+
+    &:active {
+        transform: translateY(2px);
+    }
+}
+
+.next-button-icon {
+    color: #ffd700;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+
+    svg {
+        display: block;
+    }
+}
+
+.next-button-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.next-button-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #ffd700;
+    text-transform: uppercase;
+}
+
+.next-button-number {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.next-button-stick {
+    color: #ffd700;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+@keyframes clapperboardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Адаптив для мобильных
+@media (max-width: 600px) {
+    .next-button {
+        padding: 10px 20px;
+        gap: 12px;
+    }
+
+    .next-button-title {
+        font-size: 0.7rem;
+    }
+
+    .next-button-number {
+        font-size: 0.9rem;
+    }
+
+    .next-button-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .next-button-stick svg {
+        width: 16px;
+        height: 16px;
+    }
+}
