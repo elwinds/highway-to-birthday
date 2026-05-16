@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { MEMES, TEXT } from "./constants";
 import "./duel-3.scss";
+import { BASE_URL } from "../../constants";
 
 interface Duel3Props {
   onComplete: () => void;
@@ -18,7 +19,11 @@ const Duel3: React.FC<Duel3Props> = ({ onComplete, setShowNextButton }) => {
 
   // Запуск фоновой музыки
   useEffect(() => {
-    audioRef.current = new Audio("/sounds/Livin-On-A-Chain-Gang.mp3");
+    // audioRef.current = new Audio("/sounds/Livin-On-A-Chain-Gang.mp3");
+    audioRef.current = new Audio(
+      `${BASE_URL}/sounds/Livin-On-A-Chain-Gang.mp3`
+    );
+
     audioRef.current.volume = 0.3;
     audioRef.current.loop = true;
     audioRef.current.play().catch((e) => console.log("Audio play failed:", e));

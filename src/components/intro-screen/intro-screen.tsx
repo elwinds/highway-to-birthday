@@ -1,5 +1,6 @@
 ﻿import React, { useRef, useEffect } from "react";
 import "./intro-screen.scss";
+import { BASE_URL } from "../../constants";
 
 interface IntroScreenProps {
   onStart: () => void;
@@ -10,7 +11,9 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onStart }) => {
 
   useEffect(() => {
     // Запускаем музыку при монтировании компонента
-    audioRef.current = new Audio("/sounds/intro-music.mp3");
+    // audioRef.current = new Audio("/sounds/intro-music.mp3");
+    audioRef.current = new Audio(`${BASE_URL}/sounds/intro-music.mp3`);
+
     audioRef.current.volume = 0.4;
     audioRef.current.loop = true;
     audioRef.current.play().catch((e) => console.log("Audio play failed:", e));

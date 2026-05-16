@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { PHRASES, TEXT } from "./constants";
 import "./duel-8.scss";
+import { BASE_URL } from "../../constants";
 
 interface Duel8Props {
   onComplete: () => void;
@@ -30,7 +31,9 @@ const Duel8: React.FC<Duel8Props> = ({ onComplete, setShowNextButton }) => {
 
   // Запуск фоновой музыки
   useEffect(() => {
-    audioRef.current = new Audio("/sounds/Back-In-Black.mp3");
+    // audioRef.current = new Audio("/sounds/Back-In-Black.mp3");
+    audioRef.current = new Audio(`${BASE_URL}/sounds/Back-In-Black.mp3`);
+
     audioRef.current.volume = 0.25;
     audioRef.current.loop = true;
     audioRef.current.play().catch((e) => console.log("Audio play failed:", e));

@@ -1,4 +1,6 @@
-﻿export const SLIDES = [
+﻿import { BASE_URL } from "../../constants";
+
+export const SLIDES = [
   {
     id: 0,
     type: "text",
@@ -28,5 +30,10 @@
     title: "HIGHWAY TO BIRTHDAY",
     subtitle: "Биография, которую нельзя поставить на паузу",
   },
-  { id: 5, type: "image", src: "/images/poster.jpg", alt: "Постер фильма" },
+  {
+    id: 5,
+    type: "image",
+    src: `${BASE_URL}/images/poster.jpg`,
+    alt: "Постер фильма",
+  },
 ];

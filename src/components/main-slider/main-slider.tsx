@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { SLIDES } from "./constants";
 import "./main-slider.scss";
+import { BASE_URL } from "../../constants";
 
 interface SliderProps {
   onComplete: () => void; // вызывается, когда слайдер закончился и нужно показать экран с кнопкой
@@ -14,7 +15,7 @@ const MainSlider: React.FC<SliderProps> = ({ onComplete }) => {
 
   // Запуск музыки при монтировании компонента
   useEffect(() => {
-    audioRef.current = new Audio("/sounds/highway-to-hell.mp3");
+    audioRef.current = new Audio(`${BASE_URL}/sounds/highway-to-hell.mp3`);
     audioRef.current.loop = true; // зацикливаем, чтобы бесконечно играла
     audioRef.current.volume = 0.5;
 

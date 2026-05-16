@@ -2,6 +2,7 @@
 import { motion, AnimatePresence, Reorder } from "framer-motion";
 import { PHOTOS, TEXT, SUCCESS_MESSAGES } from "./constants";
 import "./duel-7.scss";
+import { BASE_URL } from "../../constants";
 
 interface Duel7Props {
   onComplete: () => void;
@@ -19,7 +20,9 @@ const Duel7: React.FC<Duel7Props> = ({ onComplete, setShowNextButton }) => {
 
    // Запуск фоновой музыки
    useEffect(() => {
-     audioRef.current = new Audio("/sounds/Crazy-Train.mp3");
+    //  audioRef.current = new Audio("/sounds/Crazy-Train.mp3");
+     audioRef.current = new Audio(`${BASE_URL}/sounds/Crazy-Train.mp3`);
+
      audioRef.current.volume = 0.3;
      audioRef.current.loop = true;
      audioRef.current.play().catch((e) => console.log("Audio play failed:", e));
