@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { TEXT, WAIT_TIME } from "./constants";
 import "./duel-5.scss";
+import { BASE_URL } from "../../constants";
 
 interface Duel5Props {
   onComplete: () => void;
@@ -25,9 +26,16 @@ const Duel5: React.FC<Duel5Props> = ({ onComplete, setShowNextButton }) => {
 
   // Инициализация звуков
   useEffect(() => {
-    warningSoundRef.current = new Audio("/sounds/warning.mp3");
-    explosionSoundRef.current = new Audio("/sounds/explosion.mp3");
-    guitarRiffSoundRef.current = new Audio("/sounds/guitar-riff.mp3");
+    // warningSoundRef.current = new Audio("/sounds/warning.mp3");
+    warningSoundRef.current = new Audio(`${BASE_URL}/sounds/warning.mp3`);
+    explosionSoundRef.current = new Audio(`${BASE_URL}/sounds/explosion.mp3`);
+    guitarRiffSoundRef.current = new Audio(
+      `${BASE_URL}/sounds/guitar-riff.mp3`
+    );
+
+
+    // explosionSoundRef.current = new Audio("/sounds/explosion.mp3");
+    // guitarRiffSoundRef.current = new Audio("/sounds/guitar-riff.mp3");
 
     // Настройка громкости
     if (warningSoundRef.current) warningSoundRef.current.volume = 0.4;

@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import "./duel-1.scss";
 import { STAR_MAPS, TEXT } from "./constants";
+import { BASE_URL } from "../../constants";
 
 interface Duel1Props {
   onComplete: () => void;
@@ -16,7 +17,7 @@ const Duel1: React.FC<Duel1Props> = ({ onComplete, setShowNextButton }) => {
 
   // Запуск фоновой музыки
   useEffect(() => {
-    audioRef.current = new Audio("/sounds/Shoot-to-thrill.mp3");
+    audioRef.current = new Audio(`${BASE_URL}/sounds/Shoot-to-thrill.mp3`);
     audioRef.current.volume = 0.3;
     audioRef.current.loop = true;
     audioRef.current.play().catch((e) => console.log("Audio play failed:", e));

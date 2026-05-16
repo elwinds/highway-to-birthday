@@ -1,6 +1,9 @@
-﻿export const GUEST_STAR = {
+﻿import { BASE_URL } from "../../constants";
+
+export const GUEST_STAR = {
   name: "Эксл Роуз",
-  videoSrc: "/videos/guest-star.mp4",
+  // videoSrc: "/videos/guest-star.mp4",
+  videoSrc: `${BASE_URL}/videos/guest-star.mp4`,
 };
 
 export const TEXT = {

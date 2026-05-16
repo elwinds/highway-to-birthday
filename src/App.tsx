@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import MainSlider from "./components/main-slider/main-slider";
 import IntroScreen from "./components/intro-screen/intro-screen";
-import "./styles/global.css";
+import "./styles/global.scss";
 import { useAppState } from "./hooks/use-app-state";
 import Duel1 from "./components/duel-1/duel-1";
 import NextButton from "./components/next-button/next-button";

@@ -1,39 +1,40 @@
-﻿export const MEMES = [
+﻿import { BASE_URL } from "../../constants";
+
+export const MEMES = [
   {
     id: 1,
-    image: "/images/memes/boromir.jpg",
+    image: `${BASE_URL}/images/memes/boromir.jpg`,
     hasPhoto: true,
-    userPhoto: "/images/memes/user-boromir.jpg",
+    userPhoto: `${BASE_URL}/images/memes/user-boromir.jpg`,
   },
   {
     id: 2,
-    image: "/images/memes/candibober.jpg",
+    image: `${BASE_URL}/images/memes/candibober.jpg`,
     hasPhoto: true,
-    userPhoto: "/images/memes/user-candibober.jpg",
+    userPhoto: `${BASE_URL}/images/memes/user-candibober.jpg`,
   },
-
   {
     id: 3,
-    image: "/images/memes/mackonahi.jpg",
+    image: `${BASE_URL}/images/memes/mackonahi.jpg`,
     hasPhoto: true,
-    userPhoto: "/images/memes/user-mackonahi.jpg",
+    userPhoto: `${BASE_URL}/images/memes/user-mackonahi.jpg`,
   },
   {
     id: 4,
-    image: "/images/memes/rasskazi.jpg",
+    image: `${BASE_URL}/images/memes/rasskazi.jpg`,
     hasPhoto: true,
-    userPhoto: "/images/memes/user-rasskazi.jpg",
+    userPhoto: `${BASE_URL}/images/memes/user-rasskazi.jpg`,
   },
   {
     id: 5,
-    image: "/images/memes/smile.jpg",
+    image: `${BASE_URL}/images/memes/smile.jpg`,
     hasPhoto: true,
-    userPhoto: "/images/memes/user-smile.jpg",
+    userPhoto: `${BASE_URL}/images/memes/user-smile.jpg`,
   },
   {
     id: 6,
-    image: "/images/memes/obezyana.jpg",
-    hasPhoto: false, // ЭТОТ БЕЗ ФОТО — правильный ответ
+    image: `${BASE_URL}/images/memes/obezyana.jpg`,
+    hasPhoto: false,
     userPhoto: null,
   },
 ];

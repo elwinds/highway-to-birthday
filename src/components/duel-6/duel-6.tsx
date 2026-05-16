@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { GUEST_STAR, TEXT, CORRECT_ANSWERS } from "./constants";
 import "./duel-6.scss";
+import { BASE_URL } from "../../constants";
 
 interface Duel6Props {
   onComplete: () => void;
@@ -35,7 +36,10 @@ const Duel6: React.FC<Duel6Props> = ({ onComplete, setShowNextButton }) => {
       setShowNextButton(true);
       onComplete();
 
-      const successSound = new Audio("/sounds/success.mp3");
+      // const successSound = new Audio("/sounds/success.mp3");
+      const successSound = new Audio(`${BASE_URL}/sounds/success.mp3`);
+
+      
       successSound.volume = 0.3;
       successSound.play().catch((e) => console.log(e));
     } else {

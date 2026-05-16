@@ -1,23 +1,31 @@
-﻿export const SONGS = [
+﻿import { BASE_URL } from "../../constants";
+
+export const SONGS = [
   {
     id: 1,
     name: "Paradise City",
     artist: "Трек №1",
-    audioFile: "/sounds/paradise-city-short.mp3",
+    // audioFile: "/sounds/paradise-city-short.mp3",
+    audioFile: `${BASE_URL}/sounds/paradise-city-short.mp3`,
+
     correctAnswers: ["paradise city", "paradise", "city"],
   },
   {
     id: 2,
     name: "Girls In Black",
     artist: "Трек №2",
-    audioFile: "/sounds/girls-in-black-short.mp3",
+    // audioFile: "/sounds/girls-in-black-short.mp3",
+    audioFile: `${BASE_URL}/sounds/girls-in-black-short.mp3`,
+
     correctAnswers: ["girls in black", "girls in black", "girls"],
   },
   {
     id: 3,
     name: "Enter Sandman",
     artist: "Трек №3",
-    audioFile: "/sounds/enter-sandman-short.mp3",
+    // audioFile: "/sounds/enter-sandman-short.mp3",
+    audioFile: `${BASE_URL}/sounds/enter-sandman-short.mp3`,
+
     correctAnswers: ["enter sandman", "sandman", "enter"],
   },
 ];

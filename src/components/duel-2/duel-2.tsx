@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { TEXT, CORRECT_COORDINATES, TOLERANCE } from "./constants";
 import "./duel-2.scss";
+import { BASE_URL } from "../../constants";
 
 interface Duel2Props {
   onComplete: () => void;
@@ -16,7 +17,11 @@ const Duel2: React.FC<Duel2Props> = ({ onComplete, setShowNextButton }) => {
 
   // Запуск фоновой музыки
   useEffect(() => {
-    audioRef.current = new Audio("/sounds/Welcome-to-the-jungle.mp3");
+    // audioRef.current = new Audio("/sounds/Welcome-to-the-jungle.mp3");
+    audioRef.current = new Audio(
+      `${BASE_URL}/sounds/Welcome-to-the-jungle.mp3`
+    );
+
     audioRef.current.volume = 0.3;
     audioRef.current.loop = true;
     audioRef.current.play().catch((e) => console.log("Audio play failed:", e));
