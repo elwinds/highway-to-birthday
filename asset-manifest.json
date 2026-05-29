@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/highway-to-birthday/static/css/main.766b9958.css",
-    "main.js": "/highway-to-birthday/static/js/main.da93da59.js",
+    "main.css": "/highway-to-birthday/static/css/main.11c99fe7.css",
+    "main.js": "/highway-to-birthday/static/js/main.3f7fec7a.js",
     "index.html": "/highway-to-birthday/index.html",
-    "main.766b9958.css.map": "/highway-to-birthday/static/css/main.766b9958.css.map",
-    "main.da93da59.js.map": "/highway-to-birthday/static/js/main.da93da59.js.map"
+    "main.11c99fe7.css.map": "/highway-to-birthday/static/css/main.11c99fe7.css.map",
+    "main.3f7fec7a.js.map": "/highway-to-birthday/static/js/main.3f7fec7a.js.map"
   },
   "entrypoints": [
-    "static/css/main.766b9958.css",
-    "static/js/main.da93da59.js"
+    "static/css/main.11c99fe7.css",
+    "static/js/main.3f7fec7a.js"
   ]
 }
