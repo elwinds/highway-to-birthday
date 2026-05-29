@@ -1,7 +1,7 @@
 {
   "name": "highway-to-birthday",
   "homepage": "https://elwinds.github.io/highway-to-birthday",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
